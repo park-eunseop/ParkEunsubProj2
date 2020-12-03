@@ -10,7 +10,7 @@ import com.kosmo.pro2.model.MemberDTO;
 public class ProjRESTController {
 	
 	@PostMapping(value = "/json/sign/idCheck",produces = "text/html;charset=UTF-8")
-	public String login(@RequestBody MemberDTO user) {
+	public String idcheck(@RequestBody MemberDTO user) {
 		
 		System.out.println(user);
 		String msg;
@@ -24,6 +24,7 @@ public class ProjRESTController {
 		
 		return msg;
 	}
+	
 	
 	
 	

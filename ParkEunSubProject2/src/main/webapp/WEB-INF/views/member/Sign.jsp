@@ -10,8 +10,7 @@
 			
 			console.log("focus input id");			
 			$('#inputId').keypress(function(){
-				console.log("keypress");
-				console.log($('#inputId').val());
+								
 			});			
 			
 			
@@ -38,11 +37,23 @@
 				success:function(data){
 					console.log('서버로 부터 받은 데이타 : ',data);
 					$('#spanIdCheck').html(data);
+					if(data!='사용가능'){
+						console.log('no!');
+						$('#btn').attr('disabled','disabled');
+					}	
+					else
+						$('#btn').removeAttr('disabled');						
 				}				
-			});	
-			
-			
-		});
+			});				
+		}); // id
+		$('#inputPwd').blur(function() { 
+			var len = $('#inputPwd').val().length;
+			console.log(len);
+			if(len<8)
+				$('#spanpwdCheck').html("8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.");
+			else
+				$('#spanpwdCheck').html("");			
+		});///
 		
 		
 	});
@@ -73,15 +84,13 @@
 							
 						</div>						
 							<span id ="spanIdCheck" style="color:red"></span>
-						<div>
-						
-						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">password</label>
 						<div class="col-sm-4">
-							<input type="password" class="form-control" name="pass" placeholder="비밀번호를 입력하세요?" >
+							<input id="inputPwd" type="password" class="form-control" name="pass" placeholder="비밀번호를 입력하세요?" >
 						</div>
+						<span id ="spanpwdCheck" style="color:red">here</span>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">password check</label>
@@ -104,7 +113,7 @@
 							
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-primary">가입</button>
+							<button id="btn" type="submit" class="btn btn-primary">가입</button>
 						</div>
 					</div>
 				</form>
