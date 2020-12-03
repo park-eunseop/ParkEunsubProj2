@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace속성:매퍼파일의 완전한경로 .xml는 생략 -->
+<!-- ※ibatis와는 다르게 id값에 .(dot)를 사용 못한다. -->
+<mapper namespace="com.kosmo.pro2.mybatis.member">
+	<!--resultMap사용시 column속성 필수:ibatis와 다른점  -->
+	
+	<resultMap type="memberDTO" id="memberDTOResult">
+		<!-- 
+		property:자바빈의 속성명
+		column:테이블의 컬럼(조회결과의 컬럼들 의미)
+		 -->
+		<result property="tel_email" column="tel_email"/>
+		<result property="password" column="password"/>
+		<result property="name" column="name"/>
+		<result property="addr" column="addr"/>
+	
+
+	</resultMap>	
+
+	<select id="memberIsLogin" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM ks_member WHERE tel_email=#{tel_email} AND password=#{password}
+	</select>
+	<select id="memberSelectOne" parameterType="java.util.Map" resultType="MemberDTO">
+		SELECT * FROM ks_member WHERE tel_email=#{tel_email} AND password=#{password}
+	</select>
+
+	
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+	<properties resource="com/kosmo/pro2/mybatis/dbconnect.properties"/>
+
+
+	<typeAliases>
+		<typeAlias alias="memberDTO"
+			type="com.kosmo.pro2.model.MemberDTO" />
+
+	</typeAliases>
+	
+	<mappers>
+		<mapper	resource="com/kosmo/pro2/mybatis/member.xml" />
+		
+	</mappers>
+	
+	
+</configuration>
