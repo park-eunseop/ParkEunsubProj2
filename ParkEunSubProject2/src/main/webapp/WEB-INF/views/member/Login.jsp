@@ -78,6 +78,19 @@
 		<!-- 
 		<section id="home" class="home bg-black fix">
 		 -->
+		 <script>
+		 $( function() {
+			    $( "#datepicker" ).datepicker({
+			      changeMonth: true,
+			      changeYear: true,
+			      minDate: '-50y',
+			      yearRange: "1980:2010"
+			    });
+			  } );
+		 
+		 </script>
+		 
+		 
 		 
 		<div class="container-login100" style="background-image: url('<c:url value="/resources/assets/images/bg8.jpg"/>')">		 
 		<!-- <div class="container-login100" style="background-image: url('login/images/bg-01.jpg');"> -->			 
@@ -115,11 +128,22 @@
 						<a href="#" class="txt2 bo1 m-l-5">
 							Forgot?
 						</a>
-					</div>
+					</div>					
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
 						<input class="input100" type="password" name="password" >
 						<span class="focus-input100"></span>
 					</div>
+					
+					<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							Date
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" id="datepicker" >
+						<span class="focus-input100"></span>
+					</div>
+					
 
 					<div class="container-login100-form-btn m-t-17">
 						<button type="submit" class="login100-form-btn">
