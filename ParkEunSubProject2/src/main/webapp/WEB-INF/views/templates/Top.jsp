@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script>
-
+/*
 	function isLogin(){
 	//ajax로 요청-로그인 여부 판단
 	$.ajax({
@@ -35,16 +38,76 @@
 		//location.replace("<c:url value="/OneMemo/Auth/Logout.do"/>");
 		$('#logoutForm').submit();//스프링 씨큐리티의 csrf공격 사용시
 	}/////////////////
-
+*/
 </script>
 
 
 
-<!-- 로그아웃 GET->POST방식으로 변경하기 위한 폼 추가 -->
+            <!--Home page style-->
+
+
+            <nav class="navbar navbar-default bootsnav navbar-fixed no-background white">
+
+                <!-- Start Top Search -->
+                <div class="top-search">
+                    <div class="container">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Top Search -->
+
+
+                <div class="container"> 
+                    <div class="attr-nav">
+                        <ul>
+                            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                        </ul>
+                    </div> 
+
+                    <!-- Start Header Navigation -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand" href="#brand">
+                            <img src="<c:url value="/resources/assets/images/logo.png"/>" class="logo" alt="">
+                            <!--<img src="assets/images/footer-logo.png" class="logo logo-scrolled" alt="">-->
+                        </a>
+
+                    </div>
+                    <!-- End Header Navigation -->
+
+                    <!-- navbar menu -->
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#home">Home</a></li>                    
+                            <li><a href="<c:url value="/Member/Auth/Login.do"/>">Login</a></li>
+                            <li><a href="#service">Service</a></li>
+                            <li><a href="#portfolio">Portfolio</a></li>
+                            <li><a href="#test">Testimonial</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div> 
+
+            </nav>
+
+
+
+
+
+
+
+<!-- 로그아웃 GET->POST방식으로 변경하기 위한 폼 추가 
 <form id="logoutForm" method="post" action="<c:url value="/Member/Auth/Logout.do"/>">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
-<!-- Navbar -->
+-->
+<!-- Navbar 
 <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
@@ -70,4 +133,5 @@
     </div>
   </div>
 </nav>
+-->
 <!--  상단 메뉴 끝 -->
