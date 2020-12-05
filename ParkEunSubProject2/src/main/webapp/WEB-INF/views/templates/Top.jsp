@@ -32,14 +32,19 @@
 	});
 	
 	}///////////
-
+	*/
 
 	function logout(){
 		//location.replace("<c:url value="/OneMemo/Auth/Logout.do"/>");
 		$('#logoutForm').submit();//스프링 씨큐리티의 csrf공격 사용시
 	}/////////////////
-*/
+
 </script>
+			
+<!-- 로그아웃 GET->POST방식으로 변경하기 위한 폼 추가 -->
+		<form id="logoutForm" method="post" action="<c:url value="/Member/Auth/Logout.do"/>">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		</form>
 
 
 
@@ -73,7 +78,7 @@
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                             <i class="fa fa-bars"></i>
                         </button>
-                        <a class="navbar-brand" href="#brand">
+                        <a class="navbar-brand" href="<c:url value="/"/>">
                             <img src="<c:url value="/resources/assets/images/logo.png"/>" class="logo" alt="">
                             <!--<img src="assets/images/footer-logo.png" class="logo logo-scrolled" alt="">-->
                         </a>
@@ -84,8 +89,14 @@
                     <!-- navbar menu -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#home">Home</a></li>                    
-                            <li><a href="<c:url value="/Member/Auth/Login.do"/>">Login</a></li>
+                            <li><a href="<c:url value="/"/>">Home</a></li> 
+                            <sec:authorize access="isAnonymous()">
+								<li><a href="<c:url value="/Member/Auth/Login.do"/>">Login</a></li>
+								<li><a href="<c:url value="/Member/SignUp.do"/>">Sign up</a></li>
+							</sec:authorize>
+							<sec:authorize access="isAuthenticated()">
+								<li><a href="javascript:logout()">Logout</a></li>
+							</sec:authorize>
                             <li><a href="#service">Service</a></li>
                             <li><a href="#portfolio">Portfolio</a></li>
                             <li><a href="#test">Testimonial</a></li>
@@ -102,11 +113,6 @@
 
 
 
-<!-- 로그아웃 GET->POST방식으로 변경하기 위한 폼 추가 
-<form id="logoutForm" method="post" action="<c:url value="/Member/Auth/Logout.do"/>">
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-</form>
--->
 <!-- Navbar 
 <nav class="navbar navbar-default">
   <div class="container">
