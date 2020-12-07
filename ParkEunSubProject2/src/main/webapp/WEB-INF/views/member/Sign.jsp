@@ -3,126 +3,109 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
-<script>
-	$(function(){
-
-		$('#inputId').focus(function() { 
-			
-			console.log("focus input id");			
-			$('#inputId').keypress(function(){
-								
-			});			
-			
-			
-		});
-		
-		$('#inputId').blur(function() { 
-			
-			console.log("blur input id");
-			console.log("blur: "+$('#inputId').val());
-			
-			var data = $('#inputId').serializeArray();	
-			console.log(data);
-			obj = {};
-			$.each(data,function(index,element){
-				obj[element.name]=element.value;				
-			});
-			console.log(obj);
-			$.ajax({
-				type:'post',
-				url:"<c:url value='/json/sign/idCheck'/>",
-				dataType:'text',
-				data:JSON.stringify(obj),
-				contentType:'application/json',
-				success:function(data){
-					console.log('서버로 부터 받은 데이타 : ',data);
-					$('#spanIdCheck').html(data);
-					if(data!='사용가능'){
-						console.log('no!');
-						$('#btn').attr('disabled','disabled');
-					}	
-					else
-						$('#btn').removeAttr('disabled');						
-				}				
-			});				
-		}); // id
-		$('#inputPwd').blur(function() { 
-			var len = $('#inputPwd').val().length;
-			console.log(len);
-			if(len<8)
-				$('#spanpwdCheck').html("8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.");
-			else
-				$('#spanpwdCheck').html("");			
-		});///
-		
-		
-	});
 
 
-
-
-
-</script>
-
-<div class="container">
-		<!-- 점보트론(Jumbotron) -->
-		<div class="jumbotron" style="color: black; background-color: #5FEE9E">
-			<h1>
-				회원가입 <small>회원가입 페이지(아이디 중복/길이/형식/비밀번호8글자이상)</small>
-			</h1>
-		</div>
-		<div class="row" style="color: #828282">
-			<div class="col-md-12">
-				<form class="form-horizontal" method="post" action="<c:url value='/DataRoom/Sign.kosmo'/>">
-					<div class="form-group"><!-- <div class="row">와 같다 -->
-						<!--  label에 control-label도 함께:가운데 정렬 -->
-						<label  class="col-sm-2 control-label">Tell/E-mail</label>
-						
-						<div id="check" class="col-sm-4">						
-										
-							<input id="inputId" type="text" class="form-control" name="tel_email" placeholder="휴대폰 번호 또는 이메일을 입력하세요?">
-							
-						</div>						
-							<span id ="spanIdCheck" style="color:red"></span>
+<!-- 
+<div class="container-login100" style="background-image: url('<c:url value="/resources/assets/images/bg8.jpg"/>')">		 
+	
+</div>
+ -->
+<div class="page-wrapper p-t-180 p-b-100 font-robo"
+	style="background-image: url('<c:url value="/resources/assets/images/bg8.jpg"/>')">
+	<div class="wrapper wrapper--w960">
+		<div class="card card-2">
+			<div class="card-heading"></div>
+			<div class="card-body">
+				<h2 class="title">Sign up</h2>
+				<form method="POST" action="<c:url value="/Member/UserSignUp.do"/>" enctype="multipart/form-data">
+					<div class="input-group">
+						<input class="input--style-2" type="text" placeholder="ID"
+							name="id">
 					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">password</label>
-						<div class="col-sm-4">
-							<input id="inputPwd" type="password" class="form-control" name="pass" placeholder="비밀번호를 입력하세요?" >
+					<div class="row row-space">
+						<div class="col-2">
+							<div class="input-group">
+								<input class="input--style-2" type="password"
+									placeholder="Password" name="password">
+							</div>
 						</div>
-						<span id ="spanpwdCheck" style="color:red">here</span>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">password check</label>
-						<div class="col-sm-4">
-							<input type="password" class="form-control" name="pass_check" placeholder="다시한번 비밀번호를 입력하세요?" >
+						<div class="col-2">
+							<div class="input-group">
+								<input class="input--style-2" type="password"
+									placeholder="Repeat Password" name="re_password">
+							</div>
 						</div>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">name</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" name="name" placeholder="이름을 입력하세요?" >
+					<div class="row row-space">
+						<div class="col-2">
+							<div class="input-group">
+								<input class="input--style-2" type="text" placeholder="Name"
+									name="name">
+							</div>
+						</div>
+						<div class="col-2">
+							<div class="input-group">
+								<input class="input--style-2" type="text" placeholder="Nickname"
+									name="nickname">
+							</div>
 						</div>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">address</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" name="addr" placeholder="주소를 입력하세요?" >
+					<div class="row row-space">
+						<div class="col-2">
+							<div class="input-group">
+								<input class="input--style-2 js-datepicker" type="text"
+									placeholder="Birthdate" name="birthday"> <i
+									class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+							</div>
 						</div>
-					</div>							
-							
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<button id="btn" type="submit" class="btn btn-primary">가입</button>
+						<div class="col-2">
+							<div class="input-group">
+								<div class="rs-select2 js-select-simple select--no-search">
+									<select name="gender">
+										<option disabled="disabled" selected="selected">Gender</option>
+										<option>Male</option>
+										<option>Female</option>
+										<option>Other</option>
+									</select>
+									<div class="select-dropdown"></div>
+								</div>
+							</div>
 						</div>
+					</div>
+					<div class="input-group">
+						<input class="input--style-2" type="file"
+							 name="upload">
+					</div>
+					<div class="input-group">
+						<input class="input--style-2" type="text"
+							placeholder="Address" name="addr">
+					</div>
+					<div class="input-group">
+						<textarea cols="30" rows="10" class="input--style-2"
+							placeholder="let me know you!" name="self_intro"></textarea>
+					</div>
+
+					<div class="p-t-30">
+						<button class="btn btn--radius btn--green" type="submit">Sign up</button>
 					</div>
 				</form>
-			</div>		
+			</div>
 		</div>
-	</div><!-- container -->
+	</div>
+</div>
 
 
 
+<!-- Jquery JS-->
+<script
+	src="<c:url value="/resources/sign/vendor/jquery/jquery.min.js"/>"></script>
+<!-- Vendor JS-->
+<script
+	src="<c:url value="/resources/sign/vendor/select2/select2.min.js"/>"></script>
+<script
+	src="<c:url value="/resources/sign/vendor/datepicker/moment.min.js"/>"></script>
+<script
+	src="<c:url value="/resources/sign/vendor/datepicker/daterangepicker.js"/>"></script>
 
-
-
+<!-- Main JS-->
+<script src="<c:url value="/resources/sign/js/global.js"/>"></script>

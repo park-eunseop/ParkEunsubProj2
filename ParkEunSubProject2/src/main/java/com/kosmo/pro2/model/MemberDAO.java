@@ -44,7 +44,8 @@ public class MemberDAO implements MemberService {
 	@Override
 	public int insert(Map map) {
 		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("here!");
+		return sqlMapper.insert("memberInsert",map);
 	}
 
 	@Override

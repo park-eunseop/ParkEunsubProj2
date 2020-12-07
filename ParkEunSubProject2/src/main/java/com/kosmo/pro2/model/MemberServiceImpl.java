@@ -40,8 +40,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int insert(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insert(map);
 	}
 
 	@Override

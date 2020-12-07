@@ -14,9 +14,9 @@ public class ProjRESTController {
 		
 		System.out.println(user);
 		String msg;
-		if(user.getTel_email().equals("sondms1224@naver.com"))
+		if(user.getId().equals("sondms1224@naver.com"))
 			msg = "사용중인 메일/전화번호입니다.";
-		else if(user.getTel_email().length()==0)			
+		else if(user.getId().length()==0)			
 			msg= "입력하세요";
 		else
 			msg= "사용가능";

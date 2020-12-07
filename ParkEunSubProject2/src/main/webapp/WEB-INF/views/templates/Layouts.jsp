@@ -34,6 +34,38 @@
   <link rel="stylesheet" href="<c:url value="/resources/assets/css/responsive.css"/>"/>
   <script src="<c:url value="/resources/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"/>"></script>
   
+  	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>">
+
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css"/>">
+
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/vendor/animate/animate.css"/>">
+
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/vendor/css-hamburgers/hamburgers.min.css"/>">
+
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/vendor/animsition/css/animsition.min.css"/>">
+
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/vendor/select2/select2.min.css"/>">
+
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/vendor/daterangepicker/daterangepicker.css"/>">
+
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/css/util.css"/>">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/css/main.css"/>">
+  
+  	
+      <link href="<c:url value="/resources/sign/vendor/mdi-font/css/material-design-iconic-font.min.css"/>" rel="stylesheet" media="all">
+    <link href="<c:url value="/resources/sign/vendor/font-awesome-4.7/css/font-awesome.min.css"/>" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="<c:url value="/resources/sign/vendor/select2/select2.min.css"/>" rel="stylesheet" media="all">
+    <link href="<c:url value="/resources/sign/vendor/datepicker/daterangepicker.css"/>" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="<c:url value="/resources/sign/css/main.css"/>" rel="stylesheet" media="all">
+  
+  
+  
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

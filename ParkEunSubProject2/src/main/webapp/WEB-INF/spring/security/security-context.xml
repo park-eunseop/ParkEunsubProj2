@@ -30,7 +30,7 @@
 			default-target-url="/Member/Auth/Login.do"
 			authentication-failure-url="/Member/Auth/Login.do?NotLogin=error"
 			login-processing-url="/Member/Auth/LoginProcess.do"
-			username-parameter="tel_email"
+			username-parameter="id"
 			password-parameter="password"
 		/>
 		<!-- 
@@ -65,8 +65,8 @@
 		<security:authentication-provider>
 			<security:jdbc-user-service 
 			data-source-ref="dataSourceByJNDI"
-			users-by-username-query="SELECT M.TEL_EMAIL USERNAME,M.PASSWORD PASSWORD,ENABLED FROM KS_MEMBER M JOIN AUTH_SECURITY AU ON M.TEL_EMAIL=AU.TEL_EMAIL WHERE M.TEL_EMAIL=?"
-			authorities-by-username-query="SELECT M.TEL_EMAIL AS USERNAME,AUTHORITY FROM KS_MEMBER M JOIN AUTH_SECURITY AU ON M.TEL_EMAIL=AU.TEL_EMAIL WHERE M.TEL_EMAIL=?"
+			users-by-username-query="SELECT M.ID USERNAME,M.PASSWORD PASSWORD,ENABLED FROM MEMBER M JOIN AUTH_SECURITY AU ON M.ID=AU.ID WHERE M.ID=?"
+			authorities-by-username-query="SELECT M.ID AS USERNAME,AUTHORITY FROM MEMBER M JOIN AUTH_SECURITY AU ON M.ID=AU.ID WHERE M.ID=?"
 			
 			/>
 		</security:authentication-provider>	

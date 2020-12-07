@@ -59,22 +59,7 @@
 		</div>
 	</div>
 	-->		
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>">
 
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css"/>">
-
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/vendor/animate/animate.css"/>">
-
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/vendor/css-hamburgers/hamburgers.min.css"/>">
-
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/vendor/animsition/css/animsition.min.css"/>">
-
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/vendor/select2/select2.min.css"/>">
-
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/vendor/daterangepicker/daterangepicker.css"/>">
-
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/css/util.css"/>">
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/login/css/main.css"/>">
 		<!-- 
 		<section id="home" class="home bg-black fix">
 		 -->
@@ -90,10 +75,25 @@
 		 
 		 </script>
 		 
+		
+		 
 		 
 		 
 		<div class="container-login100" style="background-image: url('<c:url value="/resources/assets/images/bg8.jpg"/>')">		 
 		<!-- <div class="container-login100" style="background-image: url('login/images/bg-01.jpg');"> -->			 
+			<c:if test="${not empty param.NotLogin }">
+			<div class="row">
+				<div class="col-sm-5 alert alert-warning fade in">
+					<button class="close" data-dismiss="alert">
+						<span>&times;</span>
+					</button>
+					  인증이 안된 사용자입니다.
+				</div>
+			</div>
+			</c:if>
+			
+			
+			
 			<sec:authorize access="isAnonymous()">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
 				<form class="login100-form validate-form flex-sb flex-w" method="post" 
@@ -103,7 +103,9 @@
 					</span>
 					
 
-					<a href="#" class="m-b-20">
+					<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&
+	client_id=d325df20f4da28370a93f1ec6f99c398
+	&redirect_uri=http://localhost:8080/pro2/Member/Auth/login" class="m-b-20">
 						<img style="width: 230px;height:40px;" src="<c:url value="/resources/login/images/kakao_login_medium_narrow.png"/>" alt="KAKAO">
 					</a>
 					<a href="#" class="m-b-20">
@@ -112,11 +114,11 @@
 					
 					<div class="p-t-31 p-b-9">
 						<span class="txt1">
-							Username
+							ID
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Username is required">
-						<input class="input100" type="text" name="tel_email" >
+						<input class="input100" type="text" name="id" >
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -133,17 +135,6 @@
 						<input class="input100" type="password" name="password" >
 						<span class="focus-input100"></span>
 					</div>
-					
-					<div class="p-t-31 p-b-9">
-						<span class="txt1">
-							Date
-						</span>
-					</div>
-					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" id="datepicker" >
-						<span class="focus-input100"></span>
-					</div>
-					
 
 					<div class="container-login100-form-btn m-t-17">
 						<button type="submit" class="login100-form-btn">
