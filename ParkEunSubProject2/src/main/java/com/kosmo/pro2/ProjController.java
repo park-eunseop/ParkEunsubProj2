@@ -20,8 +20,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kosmo.pro2.fileupdown.FileUpDownUtils;
+import com.kosmo.pro2.fileupdown.FileUtils;
 import com.kosmo.pro2.model.MemberDTO;
 import com.kosmo.pro2.model.MemberService;
+
+
+
 
 //@SessionAttributes({"USER_ID","USER_NAME"})
 @Controller
@@ -91,10 +96,13 @@ public class ProjController {
 	//회원가입
 	@RequestMapping("/Member/UserSignUp.do")
 	public String userSignUp(@RequestParam Map map,@RequestParam MultipartFile upload,HttpServletRequest req) throws IllegalStateException, IOException {
-		System.out.println("here");
+		System.out.println("controller here");
 		//1]서버의 물리적 경로 얻기		
 		String physicalPath=req.getServletContext().getRealPath("/upload");
-//		//2]File객체 생성	
+//		
+		String renameFilename=FileUpDownUtils.getNewFileName(physicalPath, upload.getOriginalFilename() );
+		//File file = new File(physicalPath+File.separator+renameFilename);
+		//2]File객체 생성	
 		File file = new File(physicalPath+File.separator+upload.getOriginalFilename());
 //		//3]업로드 처리		
 		upload.transferTo(file);
@@ -109,11 +117,11 @@ public class ProjController {
 		System.out.println(map.get("addr"));
 		System.out.println(map.get("self_intro"));
 		
-		System.out.println(service.insert(map));
+	
+		int temp = service.insert(map);
 		
-		
-		
-		
+		//if(temp != 1)
+		//	FileUtils.deleteFile(req,"/Upload",upload.getOriginalFilename());
 		return "member/Login.tiles";
 	}
 

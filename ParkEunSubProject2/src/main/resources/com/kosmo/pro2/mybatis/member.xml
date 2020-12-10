@@ -35,6 +35,10 @@
 	<insert id="memberInsert" parameterType="java.util.Map">
 		INSERT INTO member(id,password,name,nickname,birthday,gender,attach_file,addr,self_intro) VALUES(#{id},#{password},#{name},#{nickname},#{birthday},#{gender},#{attach_file},#{addr},#{self_intro})
 	</insert>
+	<insert id="authInsert" parameterType="java.util.Map">
+		INSERT INTO AUTH_SECURITY(auth_no,id,enabled,authority) VALUES(SEQ_AUTHNO.NEXTVAL,#{id},DEFAULT,DEFAULT)
+	</insert> 
+	
 
 	
 </mapper>

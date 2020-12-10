@@ -16,22 +16,22 @@ public class KakaoController {
     private KakaoService kakaoService;
 	
 	
-	@RequestMapping("/Member/Auth/login")
+	@RequestMapping("/login")
 	public String login(@RequestParam("code") String code, HttpSession session) {
 		System.out.println("code:"+code);
 		String access_Token = kakaoService.getAccessToken(code);
 	    
-	    //HashMap<String, Object> userInfo = kakaoService.getUserInfo(access_Token);
-	    //System.out.println("토큰:"+access_Token);
-	    //session.setAttribute("access_Token", access_Token);
+	    HashMap<String, Object> userInfo = kakaoService.getUserInfo(access_Token);
+	    System.out.println("토큰:"+access_Token);
+	    session.setAttribute("access_Token", access_Token);
 	    
-	   // System.out.println("login Controller : " + userInfo);
+	    System.out.println("login Controller : " + userInfo);
 	    
 	    //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-	    //if (userInfo.get("email") != null) {
-	     //   session.setAttribute("userId", userInfo.get("email"));
-	      //  session.setAttribute("access_Token", access_Token);
-	   // }
+	    if (userInfo.get("email") != null) {
+	        session.setAttribute("userId", userInfo.get("email"));
+	        //session.setAttribute("access_Token", access_Token);
+	    }
 	    System.out.println("카카오톡 로그인 성공!");
 	    return "index.tiles";
 	}
@@ -39,7 +39,7 @@ public class KakaoController {
 	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
-		System.out.println("here");
+		System.out.println("logout here");
 		System.out.println(session.getAttribute("access_Token"));
 		kakaoService.kakaoLogout((String)session.getAttribute("access_Token"));
 		session.removeAttribute("access_Token");

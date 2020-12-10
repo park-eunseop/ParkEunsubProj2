@@ -94,14 +94,21 @@
                     <!-- navbar menu -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="<c:url value="/"/>">Home</a></li> 
+                            <li><a href="<c:url value="/"/>">Home</a></li>
+                            <c:if test="${empty userId}" var="isNotKakaologin">
                             <sec:authorize access="isAnonymous()">
 								<li><a href="<c:url value="/Member/Auth/Login.do"/>">Login</a></li>
 								<li><a href="<c:url value="/Member/SignUp.do"/>">Sign up</a></li>
 							</sec:authorize>
 							<sec:authorize access="isAuthenticated()">
 								<li><a href="javascript:logout()">Logout</a></li>
+								<li><a href="<c:url value="/Member/SignUp.do"/>">My page</a></li>
 							</sec:authorize>
+							</c:if> 
+							<c:if test="${not isNotlogin }">
+								<li><a href="<c:url value="/logout"/>">Logout</a></li>
+								<li><a href="<c:url value="/Member/SignUp.do"/>">My page</a></li>
+							</c:if>
                             <li><a href="#service">Service</a></li>
                             <li><a href="#portfolio">Portfolio</a></li>
                             <li><a href="#test">Testimonial</a></li>
