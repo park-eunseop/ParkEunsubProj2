@@ -105,7 +105,7 @@
 								<li><a href="<c:url value="/Member/SignUp.do"/>">My page</a></li>
 							</sec:authorize>
 							</c:if> 
-							<c:if test="${not isNotlogin }">
+							<c:if test="${not isNotKakaologin }">
 								<li><a href="<c:url value="/logout"/>">Logout</a></li>
 								<li><a href="<c:url value="/Member/SignUp.do"/>">My page</a></li>
 							</c:if>
